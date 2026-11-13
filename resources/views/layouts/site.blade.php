@@ -10,7 +10,7 @@
     <link rel="preload" href="/assets/fonts/sora.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/light.min.css">
-    <link rel="stylesheet" href="/assets/css/site.css?v=4">
+    <link rel="stylesheet" href="/assets/css/site.css?v=5">
     <link rel="stylesheet" href="/assets/css/editorial.css?v=26">
     @stack('styles')
     <script src="/assets/js/consent.js?v=2" defer></script>
