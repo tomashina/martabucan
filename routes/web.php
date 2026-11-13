@@ -1,0 +1,35 @@
+<?php
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\CmsController;
+use App\Http\Controllers\SiteController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [SiteController::class, 'home'])->name('home');
+Route::get('/cjenik', [SiteController::class, 'pricing'])->name('pricing');
+Route::redirect('/index.html', '/', 301);
+Route::get('/robots.txt', function () {
+    $settings = \App\Models\SiteContent::allSections()['settings'];
+    $body = \App\Support\SiteSettings::indexable($settings) ? "User-agent: *\nDisallow: /admin\n" : "User-agent: *\nDisallow: /\n";
+    return response($body, 200, ['Content-Type'=>'text/plain']);
+});
+Route::view('/admin/prijava', 'admin.login')->middleware('guest')->name('login');
+Route::post('/admin/prijava', [AdminController::class, 'login'])->middleware(['guest', 'throttle:5,1']);
+Route::middleware(['auth', 'auth.session'])->prefix('admin')->group(function () {
+    Route::post('/odjava', [AdminController::class, 'logout'])->name('logout');
+    Route::get('/', [CmsController::class, 'index']);
+    Route::get('/users', [AdminUserController::class, 'index']);
+    Route::get('/users/create', [AdminUserController::class, 'create']);
+    Route::post('/users', [AdminUserController::class, 'store']);
+    Route::get('/account', [AdminUserController::class, 'account']);
+    Route::put('/account/password', [AdminUserController::class, 'updateOwnPassword'])->middleware('throttle:5,1');
+    Route::get('/users/{user}/password', [AdminUserController::class, 'editPassword']);
+    Route::put('/users/{user}/password', [AdminUserController::class, 'updatePassword'])->middleware('throttle:5,1');
+    Route::get('/users/{user}/delete', [AdminUserController::class, 'confirmDelete']);
+    Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])->middleware('throttle:5,1');
+    Route::get('/pages/{page}/{block?}', [CmsController::class, 'edit']);
+    Route::put('/pages/{page}/{block}', [CmsController::class, 'update']);
+    Route::get('/{section}', [AdminController::class, 'edit']);
+    Route::put('/{section}', [AdminController::class, 'update']);
+});
+Route::get('/{page}', [SiteController::class, 'legal'])->where('page', 'privatnost|kolacici|uvjeti-koristenja|podaci-o-ordinaciji');

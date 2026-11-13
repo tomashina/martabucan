@@ -1,0 +1,330 @@
+{
+    "updated": "2026-11-12",
+    "method": "AI-assisted restoration of staff and clinic photographs; WebP exports resized and encoded with GD. Originals retained in resources/reference-images. Clinical before/after examples only resized and encoded, without retouching.",
+    "photos": {
+        "marta": {
+            "source": "generated_images/exec-3ca29a69-f991-4a10-9cb5-1f1949179f76.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/marta.webp",
+                    "width": 480,
+                    "height": 480,
+                    "bytes": 19248
+                },
+                {
+                    "file": "public/assets/images/marta-240.webp",
+                    "width": 240,
+                    "height": 240,
+                    "bytes": 6890
+                },
+                {
+                    "file": "public/assets/images/marta-960.webp",
+                    "width": 960,
+                    "height": 960,
+                    "bytes": 47160
+                }
+            ]
+        },
+        "natasa": {
+            "source": "generated_images/exec-3b9b9654-117c-438c-8682-594e300b8ae7.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/natasa.webp",
+                    "width": 480,
+                    "height": 480,
+                    "bytes": 18580
+                },
+                {
+                    "file": "public/assets/images/natasa-240.webp",
+                    "width": 240,
+                    "height": 240,
+                    "bytes": 6900
+                },
+                {
+                    "file": "public/assets/images/natasa-960.webp",
+                    "width": 960,
+                    "height": 960,
+                    "bytes": 46660
+                }
+            ]
+        },
+        "petra": {
+            "source": "generated_images/exec-467dd67a-7dc9-447f-ad2a-f355ac1285e5.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/petra.webp",
+                    "width": 480,
+                    "height": 480,
+                    "bytes": 25654
+                },
+                {
+                    "file": "public/assets/images/petra-240.webp",
+                    "width": 240,
+                    "height": 240,
+                    "bytes": 8964
+                },
+                {
+                    "file": "public/assets/images/petra-960.webp",
+                    "width": 960,
+                    "height": 960,
+                    "bytes": 65124
+                }
+            ]
+        },
+        "gabrijela": {
+            "source": "generated_images/exec-b5374755-0964-448b-86f1-cfc7d4614416.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/gabrijela.webp",
+                    "width": 480,
+                    "height": 480,
+                    "bytes": 17464
+                },
+                {
+                    "file": "public/assets/images/gabrijela-240.webp",
+                    "width": 240,
+                    "height": 240,
+                    "bytes": 6222
+                },
+                {
+                    "file": "public/assets/images/gabrijela-960.webp",
+                    "width": 960,
+                    "height": 960,
+                    "bytes": 45108
+                }
+            ]
+        },
+        "ordinacija": {
+            "source": "generated_images/exec-9e014aea-981e-438e-9d95-a1565b3eda54.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/ordinacija.webp",
+                    "width": 1280,
+                    "height": 698,
+                    "bytes": 118756
+                },
+                {
+                    "file": "public/assets/images/ordinacija-640.webp",
+                    "width": 640,
+                    "height": 349,
+                    "bytes": 47218
+                }
+            ]
+        },
+        "ordinacija2": {
+            "source": "generated_images/exec-373fedc5-f434-4244-aeaf-9c5294434a64.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/ordinacija2.webp",
+                    "width": 1000,
+                    "height": 545,
+                    "bytes": 71660
+                }
+            ]
+        },
+        "team": {
+            "source": "generated_images/exec-8b0ec8c4-1736-4de8-b147-f4e1b2c18b81.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/team.webp",
+                    "width": 1280,
+                    "height": 853,
+                    "bytes": 92980
+                },
+                {
+                    "file": "public/assets/images/team-640.webp",
+                    "width": 640,
+                    "height": 426,
+                    "bytes": 37950
+                }
+            ]
+        },
+        "cekaona": {
+            "source": "generated_images/exec-be93aad3-5719-491e-8ec4-a314d6ae67c4.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/cekaona.webp",
+                    "width": 1280,
+                    "height": 697,
+                    "bytes": 110178
+                },
+                {
+                    "file": "public/assets/images/cekaona-640.webp",
+                    "width": 640,
+                    "height": 348,
+                    "bytes": 42100
+                }
+            ]
+        },
+        "hero": {
+            "source": "generated_images/exec-373fedc5-f434-4244-aeaf-9c5294434a64.png",
+            "crop_note": "Mobile portrait crop: x=780, y=0, width=690, height=926; desktop exports use the complete frame.",
+            "outputs": [
+                {
+                    "file": "public/assets/images/hero-1280.webp",
+                    "width": 1280,
+                    "height": 697,
+                    "bytes": 94500
+                },
+                {
+                    "file": "public/assets/images/hero-1920.webp",
+                    "width": 1920,
+                    "height": 1046,
+                    "bytes": 150478
+                },
+                {
+                    "file": "public/assets/images/hero-768.webp",
+                    "width": 768,
+                    "height": 418,
+                    "bytes": 50560
+                },
+                {
+                    "file": "public/assets/images/hero-mobile.webp",
+                    "width": 768,
+                    "height": 1030,
+                    "bytes": 59858
+                }
+            ]
+        },
+        "ordinacija3": {
+            "source": "generated_images/exec-d1a08791-e515-409b-b7c4-3d5fd17cf1db.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/ordinacija3.webp",
+                    "width": 1000,
+                    "height": 545,
+                    "bytes": 63948
+                }
+            ]
+        },
+        "hero-room": {
+            "source": "generated_images/exec-9e014aea-981e-438e-9d95-a1565b3eda54.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/hero-room-768.webp",
+                    "width": 768,
+                    "height": 419,
+                    "bytes": 56494
+                },
+                {
+                    "file": "public/assets/images/hero-room-1280.webp",
+                    "width": 1280,
+                    "height": 698,
+                    "bytes": 118690
+                },
+                {
+                    "file": "public/assets/images/hero-room-1698.webp",
+                    "width": 1698,
+                    "height": 926,
+                    "bytes": 199336
+                }
+            ]
+        },
+        "hero-detail": {
+            "source": "generated_images/exec-d1a08791-e515-409b-b7c4-3d5fd17cf1db.png",
+            "outputs": [
+                {
+                    "file": "public/assets/images/hero-detail-768.webp",
+                    "width": 768,
+                    "height": 419,
+                    "bytes": 42542
+                },
+                {
+                    "file": "public/assets/images/hero-detail-1280.webp",
+                    "width": 1280,
+                    "height": 698,
+                    "bytes": 83212
+                },
+                {
+                    "file": "public/assets/images/hero-detail-1699.webp",
+                    "width": 1699,
+                    "height": 926,
+                    "bytes": 137160
+                }
+            ]
+        },
+        "zubi01": {
+            "source": "resources/reference-images/zubi01.jpg",
+            "method": "Responsive WebP encoding only; full composition and original colors retained, no retouching.",
+            "outputs": [
+                {
+                    "file": "public/assets/images/zubi01-640.webp",
+                    "width": 640,
+                    "height": 229,
+                    "bytes": 11754
+                },
+                {
+                    "file": "public/assets/images/zubi01-1058.webp",
+                    "width": 1058,
+                    "height": 378,
+                    "bytes": 27742
+                }
+            ]
+        },
+        "zubi02": {
+            "source": "resources/reference-images/zubi02.jpg",
+            "method": "Responsive WebP encoding only; full composition and original colors retained, no retouching.",
+            "outputs": [
+                {
+                    "file": "public/assets/images/zubi02-640.webp",
+                    "width": 640,
+                    "height": 229,
+                    "bytes": 18466
+                },
+                {
+                    "file": "public/assets/images/zubi02-1058.webp",
+                    "width": 1058,
+                    "height": 378,
+                    "bytes": 53490
+                }
+            ]
+        },
+        "zubi03": {
+            "source": "resources/reference-images/zubi03.jpg",
+            "method": "Responsive WebP encoding only; full composition and original colors retained, no retouching.",
+            "outputs": [
+                {
+                    "file": "public/assets/images/zubi03-640.webp",
+                    "width": 640,
+                    "height": 229,
+                    "bytes": 13084
+                },
+                {
+                    "file": "public/assets/images/zubi03-1058.webp",
+                    "width": 1058,
+                    "height": 378,
+                    "bytes": 28562
+                }
+            ]
+        },
+        "zubi04": {
+            "source": "resources/reference-images/zubi04.jpg",
+            "method": "Responsive WebP encoding only; full composition and original colors retained, no retouching.",
+            "outputs": [
+                {
+                    "file": "public/assets/images/zubi04-640.webp",
+                    "width": 640,
+                    "height": 229,
+                    "bytes": 17450
+                },
+                {
+                    "file": "public/assets/images/zubi04-1058.webp",
+                    "width": 1058,
+                    "height": 378,
+                    "bytes": 55158
+                }
+            ]
+        }
+    },
+    "decorations": {
+        "tooth-watermark": {
+            "source": "public/assets/vendor/fontawesome/webfonts/fa-light-300.woff2",
+            "glyph": "U+F5C9",
+            "method": "Existing Font Awesome light tooth rasterized once with a 16-degree rotation and translucent brand color.",
+            "file": "public/assets/images/tooth-watermark.webp",
+            "width": 900,
+            "height": 900,
+            "bytes": 8480
+        }
+    }
+}

@@ -1,0 +1,2 @@
+2.1.19
+https://registry.npmjs.org/trix/-/trix-2.1.19.tgz

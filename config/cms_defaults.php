@@ -1,0 +1,56 @@
+<?php
+return [
+    'settings' => [
+        'site_name' => 'Marta Bućan',
+        'meta_title' => 'Marta Bućan · Ordinacija dentalne medicine, Zagreb',
+        'meta_description' => 'Dentalna skrb za vas i vašu obitelj. Ordinacija Marta Bućan na Borovju u Zagrebu — preventiva, estetika, protetika i implantologija. Nazovite 01 6131 472.',
+        'site_url' => '', 'indexable' => false,
+        'og_title' => 'Marta Bućan — Vaš osmijeh. Naša predanost.',
+        'og_description' => 'Ordinacija dentalne medicine na Borovju u Zagrebu. Stručnost kojoj vjerujete. Pažnja koju osjećate.',
+        'og_image' => '/assets/images/hero-1280.webp', 'og_image_alt' => 'Ordinacija dentalne medicine Marta Bućan',
+        'ga4_id' => null, 'maps_url' => null,
+        'google_verification' => '', 'facebook_verification' => '',
+        'facebook_url' => '', 'instagram_url' => '',
+    ],
+    'intro' => [
+        'about_eyebrow' => 'DOBRO DOŠLI', 'about_html' => null,
+        'expertise_title' => 'Stručnost.', 'quality_title' => 'Kvaliteta.', 'dedication_title' => 'Predanost.',
+        'services_eyebrow' => 'DENTALNA SKRB', 'services_title' => 'Sve za vaš', 'services_accent' => 'osmijeh.',
+        'services_text' => 'Potreban vam je stomatolog kojem ćete Vi i zdravlje Vaših zuba biti na prvom mjestu? Pružajući čitav niz usluga, u Ordinaciji dentalne medicine Marta Bućan Vama i cijeloj Vašoj obitelji pomoći ćemo da imate zdrave zube, osjećate se opušteno u rukama našeg stručnog tima te da zablistate sa širokim osmijehom.',
+        'services_note' => 'Pažljivo birana terapija. Osobni pristup. U svakom koraku.',
+        'spaces_eyebrow' => 'PROSTOR ZA VAŠ DOBAR OSJEĆAJ', 'spaces_title' => 'Kod nas ste', 'spaces_accent' => 'svoji.', 'spaces_text' => 'Ugodno okruženje, pažljiv pristup i vrijeme posvećeno vama.',
+        'team_eyebrow' => 'LJUDI IZA OSMIJEHA', 'team_title' => 'Ljudi kojima možete', 'team_accent' => 'vjerovati.', 'team_text' => 'Znanje, iskustvo i ljudski pristup. Upoznajte tim koji se posvećuje vama i vašem dentalnom zdravlju.',
+        'results_eyebrow' => 'OSMIJESI IZ NAŠE ORDINACIJE', 'results_title' => 'Prije. Poslije.', 'results_accent' => 'Osmijeh.', 'results_html' => null,
+        'results_note' => 'Prikazani su pojedinačni primjeri. Rezultat ovisi o početnom stanju i individualnom planu terapije.',
+        'faq_eyebrow' => 'DOBRO JE ZNATI', 'faq_title' => 'Prije nego nam', 'faq_accent' => 'dođete.',
+        'contact_eyebrow' => 'VIDIMO SE NA BOROVJU', 'contact_title' => 'Vaš novi osmijeh počinje', 'contact_accent' => 'razgovorom.',
+        'footer_text' => 'Stručnost kojoj vjerujete. Pažnja koju osjećate.',
+        'hero_primary' => 'Dogovorimo vaš posjet', 'hero_secondary' => 'Istražite naše usluge',
+    ],
+    'media' => [
+        'hero' => [
+            ['image' => '/assets/images/hero-1280.webp', 'alt' => 'Tim ordinacije Marta Bućan tijekom rada s pacijenticom'],
+            ['image' => '/assets/images/hero-room-1280.webp', 'alt' => 'Prostor ordinacije s dentalnom stolicom i suvremenom opremom'],
+            ['image' => '/assets/images/hero-detail-1280.webp', 'alt' => 'Dentalni instrumenti i rendgenska snimka u ordinaciji'],
+        ],
+        'about' => '/assets/images/team.webp', 'about_alt' => 'Tim ordinacije dentalne medicine Marta Bućan',
+        'spaces' => [
+            ['image' => '/assets/images/ordinacija.webp', 'alt' => 'Unutrašnjost ordinacije Marta Bućan'],
+            ['image' => '/assets/images/cekaona.webp', 'alt' => 'Čekaonica ordinacije Marta Bućan'],
+        ],
+        'results' => array_map(fn ($number) => ['image' => '/assets/images/zubi'.$number.'-1058.webp', 'alt' => 'Stanje prije terapije lijevo i nakon terapije desno', 'caption' => 'Prije i poslije terapije'], ['01','02','03','04']),
+    ],
+    'faq' => [
+        ['question' => 'Kako dogovoriti prvi pregled?', 'answer' => 'Nazovite {phone} ili pošaljite e-poštu na {email}. Zajedno ćemo dogovoriti termin koji vam odgovara. Termin je potvrđen tek nakon dogovora s ordinacijom.'],
+        ['question' => 'Imam strah od stomatologa. Kako pristupate tome?', 'answer' => 'Recite nam kako se osjećate već prilikom dogovaranja termina. Posvetit ćemo vam vrijeme, razgovarati o vašim brigama i objasniti planirane korake prije početka zahvata.'],
+        ['question' => 'Primaju li se i djeca?', 'answer' => 'Da, brinemo o dentalnom zdravlju cijele obitelji. Pružamo preventivne preglede i usluge dječje stomatologije, uz savjetovanje roditelja o pravilnoj oralnoj higijeni.'],
+        ['question' => 'Kako doći do ordinacije?', 'answer' => 'Ordinacija se nalazi na adresi {address}, {city}. Poveznica „Upute za dolazak” otvara Google Maps, gdje možete odabrati način prijevoza.'],
+    ],
+    'prices' => ['eyebrow' => 'CJENIK USLUGA', 'title' => 'Jasno od prvog', 'accent' => 'koraka.', 'aside_title' => 'Vaš osmijeh zaslužuje dobar plan.', 'aside_text' => 'Svaki osmijeh je drugačiji. Nakon pregleda razgovaramo o mogućnostima i zajedno dogovaramo terapiju i njezin trošak.'],
+    'page_meta' => [
+        'business' => ['title' => 'Podaci o ordinaciji', 'intro' => 'Osnovni podaci o ordinaciji i načini na koje nam se možete obratiti.'],
+        'privacy' => ['title' => 'Politika privatnosti', 'intro' => 'Kako koristimo vaše podatke i kako možete ostvariti svoja prava.'],
+        'cookies' => ['title' => 'Politika kolačića', 'intro' => 'Jasne informacije o pohrani podataka i postavkama koje sami birate.'],
+        'terms' => ['title' => 'Uvjeti korištenja', 'intro' => 'Informacije o sadržaju stranice, dogovaranju termina i korištenju naših usluga.'],
+    ],
+];
