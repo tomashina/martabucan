@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiteContent;
+use App\Support\SiteLocale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,7 @@ class AdminController
     {
         abort_unless($request->user()?->is_admin, 403);
         abort_unless(isset(self::SECTIONS[$section]), 404);
+        $locale = SiteLocale::cms($request);
         $defaults = Arr::dot(config('content.'.$section));
         $rules = [];
         foreach ($defaults as $key => $default) {
@@ -56,13 +58,13 @@ class AdminController
         if ($section === 'business') $rules['content.oib'] = ['nullable', 'regex:/^\d{11}$/'];
         if ($section === 'prices') $rules['content.valid_from'] = ['nullable', 'date_format:Y-m-d'];
         $validated = $request->validate($rules);
-        $content = SiteContent::section($section);
+        $content = SiteContent::section($section, $locale);
         foreach ($defaults as $key => $default) {
             if (!isset($rules['content.'.$key])) continue;
             $value = Arr::get($validated, 'content.'.$key);
             Arr::set($content, $key, is_bool($default) ? (bool) $value : ($value ?? (str_ends_with($key, '.amount') ? null : '')));
         }
-        SiteContent::updateOrCreate(['key' => $section], ['value' => $content]);
+        SiteContent::updateOrCreate(['key' => SiteContent::storageKey($section, $locale)], ['value' => $content]);
         return back()->with('saved', 'Promjene su spremljene i vidljive na stranici.');
     }
 }

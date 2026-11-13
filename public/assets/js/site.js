@@ -2,12 +2,22 @@
   'use strict';
   const menu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#main-nav');
-  const closeMenu = () => { nav?.classList.remove('is-open'); menu?.setAttribute('aria-expanded', 'false'); menu?.setAttribute('aria-label', 'Otvori izbornik'); };
-  menu?.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; nav.classList.toggle('is-open', open); menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? 'Zatvori izbornik' : 'Otvori izbornik'); });
+  const closeMenu = () => { nav?.classList.remove('is-open'); menu?.setAttribute('aria-expanded', 'false'); menu?.setAttribute('aria-label', menu.dataset.openLabel); };
+  menu?.addEventListener('click', () => { const open = menu.getAttribute('aria-expanded') !== 'true'; nav.classList.toggle('is-open', open); menu.setAttribute('aria-expanded', String(open)); menu.setAttribute('aria-label', open ? menu.dataset.closeLabel : menu.dataset.openLabel); });
   nav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu?.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
   document.addEventListener('click', e => { if (!e.target.closest('.site-header')) closeMenu(); });
-  window.matchMedia('(min-width: 961px)').addEventListener('change', closeMenu);
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', closeMenu);
+
+  const updateLanguageLinks = () => {
+    document.querySelectorAll('[data-preserve-anchor]').forEach(link => {
+      const url = new URL(link.href);
+      url.hash = window.location.hash;
+      link.href = url.pathname + url.hash;
+    });
+  };
+  updateLanguageLinks();
+  window.addEventListener('hashchange', updateLanguageLinks);
 
   const galleryDialog = document.querySelector('#gallery-dialog');
   document.querySelectorAll('[data-gallery]').forEach(button => button.addEventListener('click', () => {

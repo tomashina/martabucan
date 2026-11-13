@@ -102,4 +102,11 @@ $pages['settings']=['label'=>'Postavke','url'=>'/','icon'=>'gear','description'=
   'facebook_verification'=>$f('Facebook / Meta — verifikacija domene','settings.facebook_verification','token',['help'=>'Samo vrijednost content iz oznake facebook-domain-verification.']),
  ]),
 ]];
+foreach (require __DIR__.'/interface.php' as $groupKey => $group) {
+    $fields = [];
+    foreach ($group['fields'] as $key => $text) {
+        $fields[$key] = $f($text['label'], 'ui.'.$key, max(mb_strlen($text['hr']), mb_strlen($text['de'])) > 150 ? 'textarea' : 'text', ['required' => true]);
+    }
+    $pages['general']['blocks']['ui-'.$groupKey] = $block($group['label'], 'Tekstovi gumba, oznaka i obavijesti za odabrani jezik.', $fields);
+}
 return ['pages'=>$pages,'icons'=>$icons];

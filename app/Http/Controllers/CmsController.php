@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\SiteContent;
 use App\Support\ImageAsset;
 use App\Support\RichText;
+use App\Support\SiteLocale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -23,9 +24,9 @@ class CmsController
         return [$pages, $pages[$page], $block, $pages[$page]['blocks'][$block]];
     }
 
-    private function values(array $definition): array
+    private function values(array $definition, string $locale): array
     {
-        $site = SiteContent::allSections(); $values = [];
+        $site = SiteContent::allSections($locale); $values = [];
         foreach ($definition['fields'] as $id => $field) $values[$id] = data_get($site, $field['bind']);
         return $values;
     }
@@ -33,15 +34,17 @@ class CmsController
     public function index(Request $request)
     {
         $this->authorize($request);
-        return view('admin.dashboard', ['pages' => config('cms.pages'), 'pageKey' => null, 'title' => 'Vaše stranice']);
+        return view('admin.dashboard', ['pages' => config('cms.pages'), 'pageKey' => null, 'title' => 'Vaše stranice', 'locale' => SiteLocale::cms($request)]);
     }
 
     public function edit(Request $request, string $page, ?string $block = null)
     {
         $this->authorize($request);
         [$pages, $pageData, $block, $definition] = $this->definition($page, $block);
-        $values = $this->values($definition);
-        return view('admin.page', ['pages'=>$pages,'pageKey'=>$page,'page'=>$pageData,'blockKey'=>$block,'block'=>$definition,'values'=>$values,'revision'=>hash('sha256',json_encode($values)),'title'=>$pageData['label']]);
+        $locale = SiteLocale::cms($request);
+        $values = $this->values($definition, $locale);
+        $pageData['url'] = SiteLocale::url(isset(SiteLocale::PATHS[$locale][$page]) ? $page : 'home', $locale);
+        return view('admin.page', ['pages'=>$pages,'pageKey'=>$page,'page'=>$pageData,'blockKey'=>$block,'block'=>$definition,'values'=>$values,'revision'=>hash('sha256',json_encode($values)),'title'=>$pageData['label'],'locale'=>$locale]);
     }
 
     private function rules(array $field): array
@@ -77,7 +80,8 @@ class CmsController
     {
         $this->authorize($request);
         [, , , $definition] = $this->definition($page, $block);
-        $current = $this->values($definition);
+        $locale = SiteLocale::cms($request);
+        $current = $this->values($definition, $locale);
         $rules = ['revision'=>['required','string','size:64'], 'fields'=>['required','array:'.implode(',',array_keys($definition['fields']))]];
         $labels = [];
         $input = $request->input('fields', []);
@@ -133,16 +137,18 @@ class CmsController
                     $value=$rows;
                 } else $value=$this->normalize($field,$value,$request,'uploads.'.$id,'fields.'.$id,$created);
                 [$section,$path] = array_pad(explode('.',$field['bind'],2),2,null);
-                $updates[$section] ??= SiteContent::section($section);
-                if ($path === null) $updates[$section] = $value;
-                else Arr::set($updates[$section],$path,$value);
+                $storageLocale = SiteContent::sharedField($section, $path) ? 'hr' : $locale;
+                $storageKey = SiteContent::storageKey($section, $storageLocale);
+                $updates[$storageKey] ??= SiteContent::section($section, $storageLocale);
+                if ($path === null) $updates[$storageKey] = $value;
+                else Arr::set($updates[$storageKey],$path,$value);
             }
             DB::transaction(function () use ($updates) { foreach ($updates as $key=>$value) SiteContent::updateOrCreate(['key'=>$key],['value'=>$value]); });
         } catch (\Throwable $error) {
             foreach ($created as $file) if (is_file($file)) unlink($file);
             throw $error;
         }
-        return redirect('/admin/pages/'.$page.'/'.$block)->with('saved','Promjene su spremljene i vidljive na stranici.');
+        return redirect(SiteLocale::adminUrl('/admin/pages/'.$page.'/'.$block, $locale))->with('saved','Promjene su spremljene i vidljive na stranici.');
     }
 
     private function normalize(array $field, mixed $value, Request $request, string $upload, string $attribute, array &$created): mixed

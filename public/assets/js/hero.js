@@ -20,7 +20,7 @@
   const canRotate = () => !paused && !focused && inView && !document.hidden && slides.length - failed.size > 1;
   const schedule = () => {
     window.clearTimeout(timer);
-    const label = paused ? 'Pokreni izmjenu fotografija' : 'Zaustavi izmjenu fotografija';
+    const label = paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel;
     toggle.setAttribute('aria-label', label);
     toggle.title = label;
     toggle.querySelector('[data-hero-pause-icon]').hidden = paused;

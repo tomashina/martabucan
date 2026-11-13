@@ -80,7 +80,7 @@
     if (consent?.maps) {
       if (!iframe) {
         const frame = document.createElement('iframe');
-        frame.title = 'Lokacija ordinacije Marta Bućan na Google karti';
+        frame.title = map.dataset.mapTitle || 'Google Maps';
         frame.src = map.dataset.mapSrc;
         frame.loading = 'lazy';
         frame.referrerPolicy = 'no-referrer';

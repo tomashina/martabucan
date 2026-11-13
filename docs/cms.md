@@ -2,6 +2,12 @@
 
 Otvorite `/admin` i odaberite stranicu. Naslovnica je podijeljena na devet sekcija; cjenik, podaci ordinacije i pravne stranice imaju zasebne obrasce. Sprema se samo trenutačna sekcija, a poveznica „Pogledaj na stranici” otvara odgovarajući dio javne stranice.
 
+Na vrhu odaberite „Jezik sadržaja”: Hrvatski ili Njemački. Odabrani jezik ostaje aktivan pri prelasku između sekcija i otvaranju pregleda. Sadržaj, cjenik, pravne stranice, opisi fotografija i SEO tekstovi spremaju se zasebno za svaki jezik. „Općenito” sadrži i prijevode navigacije, gumba, oznaka i obavijesti o kolačićima. Administratorsko sučelje ostaje na hrvatskom.
+
+Hrvatska naslovnica ostaje na `/`, a njemačka je na `/de`; stara poveznica `/de.html` preusmjerava na `/de`. HR/DE na javnoj stranici vodi na odgovarajuću jezičnu verziju otvorene stranice i zadržava odabranu sekciju naslovnice. Google Analytics, verifikacijske oznake, Google Maps i društvene poveznice zajedničke su postavke za oba jezika.
+
+Njemački sadržaj ima početne prijevode u konfiguraciji i može se odmah uređivati; postojeći hrvatski zapisi ostaju sačuvani. Za ovu nadogradnju nije potrebna migracija ni ponovno pokretanje seedera. Nakon povlačenja koda na poslužitelj osvježite Laravelove cacheve (`php artisan optimize:clear`, zatim `php artisan view:cache`, uz PHP 8.4 na ovom hostingu).
+
 Opisi koriste lokalno instalirani Trix 2.1.19, s vizualnim i HTML načinom. HTMLPurifier na poslužitelju uklanja skripte, umetnute medije, stilove i nesigurne poveznice. Javna stranica primjenjuje vlastitu tipografiju na spremljeni sadržaj.
 
 Usluge, FAQ, članovi tima, fotografije i cjenik mogu se dodavati, uklanjati i poredati. Uklanjanje se može poništiti tipkom „Vrati” prije spremanja. „Odustani” vraća posljednju spremljenu verziju. Nespremljene promjene upozoravaju pri odlasku, a zastarjeli obrazac ne može prebrisati novije izmjene iste sekcije.

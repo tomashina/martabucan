@@ -2,18 +2,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiteContent;
+use App\Support\SiteLocale;
 use Illuminate\View\View;
 
 class SiteController
 {
-    public function home(): View { return view('home', ['site' => SiteContent::allSections()]); }
-    public function pricing(): View { return view('pricing', ['site' => SiteContent::allSections(), 'title' => 'Cjenik usluga']); }
+    public function home(): View { return view('home', ['site' => SiteContent::allSections(app()->getLocale())]); }
+    public function pricing(): View
+    {
+        $site = SiteContent::allSections(app()->getLocale());
+        return view('pricing', ['site' => $site, 'title' => $site['ui']['pricing_title']]);
+    }
     public function legal(string $page): View
     {
-        $pages = ['privatnost' => ['privacy', 'Politika privatnosti'], 'kolacici' => ['cookies', 'Politika kolačića'], 'uvjeti-koristenja' => ['terms', 'Uvjeti korištenja'], 'podaci-o-ordinaciji' => ['business', 'Podaci o ordinaciji']];
-        abort_unless(isset($pages[$page]), 404);
-        [$key, $title] = $pages[$page];
-        $site = SiteContent::allSections();
+        $key = SiteLocale::page();
+        abort_unless(in_array($key, ['privacy', 'cookies', 'terms', 'business']), 404);
+        $site = SiteContent::allSections(app()->getLocale());
         return view('legal.page', ['site' => $site, 'key' => $key, 'title' => $site['page_meta'][$key]['title']]);
     }
 }

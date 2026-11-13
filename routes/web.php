@@ -3,11 +3,21 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\SiteController;
+use App\Http\Middleware\SetSiteLocale;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [SiteController::class, 'home'])->name('home');
-Route::get('/cjenik', [SiteController::class, 'pricing'])->name('pricing');
+Route::middleware(SetSiteLocale::class.':hr')->group(function () {
+    Route::get('/', [SiteController::class, 'home'])->name('home');
+    Route::get('/cjenik', [SiteController::class, 'pricing'])->name('pricing');
+    Route::get('/{page}', [SiteController::class, 'legal'])->where('page', 'privatnost|kolacici|uvjeti-koristenja|podaci-o-ordinaciji');
+});
+Route::middleware(SetSiteLocale::class.':de')->prefix('de')->name('de.')->group(function () {
+    Route::get('/', [SiteController::class, 'home'])->name('home');
+    Route::get('/preise', [SiteController::class, 'pricing'])->name('pricing');
+    Route::get('/{page}', [SiteController::class, 'legal'])->where('page', 'datenschutz|cookies|nutzungsbedingungen|impressum');
+});
 Route::redirect('/index.html', '/', 301);
+Route::redirect('/de.html', '/de', 301);
 Route::get('/robots.txt', function () {
     $settings = \App\Models\SiteContent::allSections()['settings'];
     $body = \App\Support\SiteSettings::indexable($settings) ? "User-agent: *\nDisallow: /admin\n" : "User-agent: *\nDisallow: /\n";
@@ -32,4 +42,3 @@ Route::middleware(['auth', 'auth.session'])->prefix('admin')->group(function () 
     Route::get('/{section}', [AdminController::class, 'edit']);
     Route::put('/{section}', [AdminController::class, 'update']);
 });
-Route::get('/{page}', [SiteController::class, 'legal'])->where('page', 'privatnost|kolacici|uvjeti-koristenja|podaci-o-ordinaciji');
