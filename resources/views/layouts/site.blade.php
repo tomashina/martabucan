@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/light.min.css">
     <link rel="stylesheet" href="/assets/css/site.css?v=6">
-    <link rel="stylesheet" href="/assets/css/editorial.css?v=27">
+    <link rel="stylesheet" href="/assets/css/editorial.css?v=28">
     @stack('styles')
     <script src="/assets/js/consent.js?v=3" defer></script>
     <script src="/assets/js/site.js?v=6" defer></script>
@@ -38,7 +38,7 @@
     <div class="container footer-bottom">
         <small>© {{ date('Y') }} Marta Bućan. {{ $site['ui']['copyright'] }}</small>
         @if($site['settings']['facebook_url'] || $site['settings']['instagram_url'])<nav aria-label="{{ $site['ui']['social_nav'] }}">@if($site['settings']['facebook_url'])<a href="{{ $site['settings']['facebook_url'] }}" target="_blank" rel="noopener noreferrer">Facebook</a>@endif @if($site['settings']['instagram_url'])<a href="{{ $site['settings']['instagram_url'] }}" target="_blank" rel="noopener noreferrer">Instagram</a>@endif</nav>@endif
-        <nav aria-label="{{ $site['ui']['legal_nav'] }}"><a href="{{ \App\Support\SiteLocale::url('business') }}">{{ $site['ui']['business_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('privacy') }}">{{ $site['ui']['privacy_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('cookies') }}">{{ $site['ui']['cookies_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('terms') }}">{{ $site['ui']['terms_title'] }}</a></nav>
+        <nav aria-label="{{ $site['ui']['legal_nav'] }}"><a href="{{ \App\Support\SiteLocale::url('business') }}">{{ $site['ui']['business_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('privacy') }}">{{ $site['ui']['privacy_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('cookies') }}">{{ $site['ui']['cookies_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('terms') }}">{{ $site['ui']['terms_title'] }}</a><button class="cookie-settings-footer" type="button" data-cookie-settings aria-haspopup="dialog" aria-controls="cookie-dialog">{{ $site['ui']['cookie_dialog_title'] }}</button></nav>
     </div>
 </footer>
 <button class="cookie-settings-fab" type="button" data-cookie-settings data-cookie-launcher aria-label="{{ $site['ui']['cookie_dialog_title'] }}" title="{{ $site['ui']['cookie_dialog_title'] }}" aria-haspopup="dialog" aria-controls="cookie-dialog" hidden><x-icon name="cookie-bite" /></button>
