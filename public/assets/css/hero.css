@@ -133,9 +133,17 @@
         min-height: clamp(660px, calc(100svh - 82px), 780px);
         padding: 345px 0 32px;
     }
+    /* Leave room for the stacked German actions within the initial viewport. */
+    html:lang(de) .hero.hero-cover {
+        min-height: min(780px, calc(100svh - 83px));
+        padding-top: 24px;
+    }
     .hero-backdrop img { object-position: center top; }
     .hero-shade {
         background: linear-gradient(180deg, transparent 28%, rgba(29, 24, 30, .12) 43%, rgba(29, 24, 30, .66) 62%, rgba(29, 24, 30, .9) 100%);
+    }
+    html:lang(de) .hero-shade {
+        background: linear-gradient(180deg, transparent, rgba(29, 24, 30, .5) 20%, rgba(29, 24, 30, .66) 62%, rgba(29, 24, 30, .9) 100%);
     }
     .hero-cover .eyebrow {
         font-size: 10px;
