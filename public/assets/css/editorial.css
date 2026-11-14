@@ -184,7 +184,13 @@ h1,h2{text-wrap:balance}.hero h1>span{color:#a17bae}.serif-accent{color:#9470a2}
 .about-content p + p { margin-top: 20px; }
 @media (max-width: 1000px) {
     .about-editorial { grid-template-columns: 1fr; gap: 32px; }
-    .about-photo { order: 2; min-height: 0; aspect-ratio: 3 / 2; }
+    .about-photo { order: 2; width: 100%; min-height: 0; }
+    /* Keep a real grid-row height before the image loads, including in iOS Safari. */
+    .about-photo .photo-depth-frame {
+        position: relative;
+        height: 0;
+        padding-bottom: 66.666667%;
+    }
     .about-content h2 { font-size: 38px; }
 }
 @media (max-width: 640px) {

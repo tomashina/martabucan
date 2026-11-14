@@ -41,7 +41,7 @@
     <div class="container about-editorial">
         <div class="about-photo photo-depth">
             <div class="photo-depth-frame">
-                <x-site-image :path="$site['media']['about']" :alt="$site['media']['about_alt']" sizes="(max-width: 1000px) 90vw, (max-width: 1400px) 45vw, 610px" />
+                <x-site-image :path="$site['media']['about']" :alt="$site['media']['about_alt']" sizes="(max-width: 1000px) 90vw, (max-width: 1400px) 45vw, 610px" loading="eager" />
             </div>
         </div>
         <div class="about-content">
