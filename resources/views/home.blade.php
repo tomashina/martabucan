@@ -130,7 +130,7 @@
             <article class="team-member">
                 <div class="team-photo photo-depth">
                     <div class="photo-depth-frame">
-                        <x-site-image :path="$member['image']" :alt="$member['name']" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1100px) calc((100vw - 96px) / 2), (max-width: 1376px) calc((100vw - 192px) / 4), 296px" />
+                        <x-site-image :path="$member['image']" :alt="$member['name']" sizes="(max-width: 370px) calc((100vw - 52px) / 2), (max-width: 640px) calc((100vw - 60px) / 2), (max-width: 1100px) calc((100vw - 96px) / 2), (max-width: 1376px) calc((100vw - 192px) / 4), 296px" />
                     </div>
                 </div>
                 <div class="member-copy">

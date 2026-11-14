@@ -365,8 +365,11 @@ h1,h2{text-wrap:balance}.hero h1>span{color:#a17bae}.serif-accent{color:#9470a2}
     .team-heading .section-number { margin-bottom: 20px; }
     .team-heading h2 { font-size: 32px; letter-spacing: -1px; }
     .team-heading > p:last-child { font-size: 17px; }
-    .team-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-    .team-member .member-copy { padding-top: 26px; }
+    .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; }
+    .team-member .member-copy { padding-top: 22px; }
+    .team-member h3 { font-size: 17px; letter-spacing: -.25px; }
+    .team-role { font-size: 13px; line-height: 1.5; }
+    .team-bio { margin-top: 10px; font-size: 14px; line-height: 1.65; }
 }
 
 /* The tinted sections share one pre-rendered, fixed raster background. */

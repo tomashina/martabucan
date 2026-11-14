@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/light.min.css">
     <link rel="stylesheet" href="/assets/css/site.css?v=6">
-    <link rel="stylesheet" href="/assets/css/editorial.css?v=29">
+    <link rel="stylesheet" href="/assets/css/editorial.css?v=30">
     @stack('styles')
     <script src="/assets/js/consent.js?v=3" defer></script>
     <script src="/assets/js/site.js?v=6" defer></script>
