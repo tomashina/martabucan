@@ -1,7 +1,7 @@
 @extends('layouts.site')
 @section('body-class', 'home-page')
 @push('styles')
-<link rel="stylesheet" href="/assets/css/hero.css?v=6">
+<link rel="stylesheet" href="/assets/css/hero.css?v=7">
 @endpush
 @push('scripts')
 <script src="/assets/js/hero.js?v=3" defer></script>

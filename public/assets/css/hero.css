@@ -158,6 +158,9 @@
         line-height: 1.11;
     }
     .hero-footer { margin-top: 24px; gap: 12px; }
+    .hero-controls { width: 100%; margin-left: 0; }
+    .hero-controls .hero-dot { justify-items: start; }
+    .hero-controls .hero-playback { display: none; }
     .hero-actions { gap: 10px; }
     .hero-actions .button {
         min-height: 50px;
