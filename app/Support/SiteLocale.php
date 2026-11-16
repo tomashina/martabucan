@@ -8,8 +8,8 @@ final class SiteLocale
     public const LANGUAGES = ['hr' => 'Hrvatski', 'de' => 'Deutsch'];
 
     public const PATHS = [
-        'hr' => ['home' => '/', 'pricing' => '/cjenik', 'business' => '/podaci-o-ordinaciji', 'privacy' => '/privatnost', 'cookies' => '/kolacici', 'terms' => '/uvjeti-koristenja'],
-        'de' => ['home' => '/de', 'pricing' => '/de/preise', 'business' => '/de/impressum', 'privacy' => '/de/datenschutz', 'cookies' => '/de/cookies', 'terms' => '/de/nutzungsbedingungen'],
+        'hr' => ['home' => '/', 'pricing' => '/cjenik', 'pricing_archive' => '/cjenik/arhiva', 'business' => '/podaci-o-ordinaciji', 'privacy' => '/privatnost', 'cookies' => '/kolacici', 'terms' => '/uvjeti-koristenja'],
+        'de' => ['home' => '/de', 'pricing' => '/de/preise', 'pricing_archive' => '/de/preise/archiv', 'business' => '/de/impressum', 'privacy' => '/de/datenschutz', 'cookies' => '/de/cookies', 'terms' => '/de/nutzungsbedingungen'],
     ];
 
     public static function url(string $page = 'home', ?string $locale = null): string

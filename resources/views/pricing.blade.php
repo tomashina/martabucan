@@ -21,6 +21,12 @@
             </div>
         </aside>
         <div class="price-list">
+            @if($priceVersion)
+                <div class="price-downloads">
+                    <a class="button" href="{{ route(app()->getLocale() === 'de' ? 'de.pricing.xml' : 'pricing.xml') }}">{{ $site['ui']['price_xml'] }}</a>
+                    <a class="text-link" href="{{ route(app()->getLocale() === 'de' ? 'de.pricing.archive' : 'pricing.archive') }}">{{ $site['ui']['price_archive'] }}</a>
+                </div>
+            @endif
             <div class="price-list-heading"><span>{{ $site['ui']['price_service'] }}</span><span>{{ $site['ui']['price_amount'] }}</span></div>
             @foreach(collect($site['prices']['items'])->groupBy(fn ($price) => trim($price['category'] ?? '')) as $category => $prices)
                 <div class="price-category" @if($category !== '') role="group" aria-labelledby="price-category-{{ $loop->index }}" @endif>
@@ -28,7 +34,19 @@
                     @foreach($prices as $price)
                         <div class="price-row">
                             <div><h3>{{ $price['name'] }}</h3>@if(!empty($price['detail']))<p>{{ $price['detail'] }}</p>@endif</div>
-                            <span class="price-amount">@if($price['amount'] !== null && $price['amount'] !== '')@if(isset($price['anchor_amount']) && $price['anchor_amount'] > $price['amount'])<del class="price-anchor"><span class="price-sr-only">{{ $site['ui']['reference_price'] }} </span>{{ number_format((float) $price['anchor_amount'], 2, ',', '.') }} €</del>@endif<span class="price-current">@if($price['from'])<small>{{ $site['ui']['price_from'] }} </small>@endif{{ number_format((float) $price['amount'], 2, ',', '.') }} €</span>@else<span class="price-pending">{{ $site['ui']['price_on_request'] }}</span>@endif</span>
+                            <span class="price-amount">
+                                @if($price['amount'] !== null && $price['amount'] !== '')
+                                    <span class="price-current">@if($price['from'])<small>{{ $site['ui']['price_from'] }} </small>@endif{{ number_format((float) $price['amount'], 2, ',', '.') }} €</span>
+                                    @if(!empty($price['special_sale_name']) && ($price['special_sale'] ?? false))<span class="price-sale">{{ $price['special_sale_name'] }}</span>@endif
+                                    @if(isset($price['anchor_amount']) && $price['anchor_amount'] !== '')
+                                        @php $anchorDate = \App\Support\PricePublication::anchorDate($site['prices'], $price); @endphp
+                                        <span class="price-reference">
+                                            <span class="price-reference-label">@if($anchorDate){{ $site['ui']['price_on_date'] }} <time datetime="{{ $anchorDate }}">{{ \Carbon\Carbon::parse($anchorDate)->format('d. m. Y.') }}</time>@else{{ $site['ui']['reference_price'] }}@endif</span>
+                                            <span>{{ number_format((float) $price['anchor_amount'], 2, ',', '.') }} €</span>
+                                        </span>
+                                    @endif
+                                @else<span class="price-pending">{{ $site['ui']['price_on_request'] }}</span>@endif
+                            </span>
                         </div>
                     @endforeach
                 </div>

@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiteContent;
+use App\Models\PriceListVersion;
 use App\Support\ImageAsset;
 use App\Support\RichText;
+use App\Support\PricePublication;
 use App\Support\SiteLocale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -115,12 +117,16 @@ class CmsController
             'mimes'=>'Učitajte JPG, PNG ili WebP fotografiju.', 'date_format'=>'Upišite ispravan datum.', 'regex'=>'Provjerite format polja :attribute.',
         ], $labels);
         if ($page === 'pricing') {
+            $published = PriceListVersion::where('locale', $locale)->exists();
             foreach ($validated['fields']['items'] as $index=>$row) {
+                if ($published && (!is_numeric($row['amount'] ?? null) || !is_numeric($row['anchor_amount'] ?? null))) throw ValidationException::withMessages(['fields.items.'.$index.'.amount'=>'Za objavljeni XML cjenik svaka usluga mora imati aktualnu i sidrenu cijenu.']);
                 if (($row['anchor_amount'] ?? null) !== null && $row['anchor_amount'] !== '') {
                     if (($row['amount'] ?? null) === null || $row['amount'] === '') throw ValidationException::withMessages(['fields.items.'.$index.'.amount'=>'Uz sidrenu cijenu upišite i aktualnu cijenu.']);
-                    if ((float)$row['anchor_amount'] < (float)$row['amount']) throw ValidationException::withMessages(['fields.items.'.$index.'.anchor_amount'=>'Sidrena cijena mora biti jednaka ili veća od aktualne.']);
+                    if (!PricePublication::anchorDate($validated['fields'], $row)) throw ValidationException::withMessages(['fields.anchor_date'=>'Upišite zajednički datum sidrenih cijena ili poseban datum uz stavku.']);
                 }
+                if (($row['special_sale'] ?? false) && !trim($row['special_sale_name'] ?? '')) throw ValidationException::withMessages(['fields.items.'.$index.'.special_sale_name'=>'Upišite naziv posebnog oblika prodaje.']);
             }
+            if ($published && !$validated['fields']['items']) throw ValidationException::withMessages(['fields.items'=>'Objavljeni cjenik mora sadržavati barem jednu uslugu.']);
         }
         if (!hash_equals(hash('sha256',json_encode($current)), $validated['revision'])) throw ValidationException::withMessages(['revision'=>'Ova je sekcija u međuvremenu promijenjena. Otvorite je ponovno prije spremanja.']);
         $created = []; $updates = [];

@@ -31,7 +31,8 @@ class PriceListTest extends TestCase
                 $this->assertFalse($item['from']);
             }
             $response = $this->get($url)->assertOk()->assertSee('16. 11. 2026.')
-                ->assertDontSee('<del class="price-anchor">', false);
+                ->assertDontSee('<del', false)->assertSee('class="price-reference"', false);
+            $this->assertSame(36, substr_count($response->getContent(), 'class="price-reference"'));
             $this->assertSame(7, substr_count($response->getContent(), 'class="price-category-title"'));
             $this->assertSame(36, substr_count($response->getContent(), 'class="price-row"'));
             $response->assertSeeInOrder(array_column($prices['items'], 'name'));
@@ -52,6 +53,7 @@ class PriceListTest extends TestCase
         $fields = [];
         foreach (config('cms.pages.pricing.blocks.content.fields') as $key => $field) $fields[$key] = data_get($site, $field['bind']);
         $revision = hash('sha256', json_encode($fields));
+        $fields['anchor_date'] = '2026-09-10';
         $row = fn ($name, $category) => ['name' => $name, 'category' => $category, 'detail' => '', 'amount' => 20, 'anchor_amount' => 20, 'from' => false];
         $fields['items'] = [$row('Prva', 'Protetika'), $row('Druga', 'Kirurgija'), $row('Treća', 'Protetika'), $row('Četvrta', '<script>unsafe</script>'), $row('Bez kategorije', '')];
         $this->put('/admin/pages/pricing/content', compact('revision', 'fields'))->assertSessionHasNoErrors();

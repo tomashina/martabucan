@@ -34,6 +34,7 @@ class PriceListSeeder extends Seeder
                 }
                 $prices['note'] = $note;
                 $prices['valid_from'] = '2026-11-16';
+                $prices['anchor_date'] = '2026-11-16';
                 SiteContent::updateOrCreate(['key' => SiteContent::storageKey('prices', $locale)], ['value' => $prices]);
             }
         });

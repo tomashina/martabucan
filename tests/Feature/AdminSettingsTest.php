@@ -67,25 +67,27 @@ class AdminSettingsTest extends TestCase
         $this->get('https://clinic.example/robots.txt')->assertSee('Disallow: /admin',false);
     }
 
-    public function test_anchor_prices_accept_equal_values_and_only_show_higher_values_as_discounts(): void
+    public function test_anchor_prices_remain_visible_above_equal_and_below_current_prices(): void
     {
         $this->actingAs($this->admin()); $payload=$this->payload('pricing','content');
+        $payload['fields']['anchor_date']='2026-09-10';
         $payload['fields']['items'][0]['amount']='80'; $payload['fields']['items'][0]['anchor_amount']='120';
         $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasNoErrors();
         $this->assertEquals(120,SiteContent::section('prices')['items'][0]['anchor_amount']);
-        $this->get('/cjenik')->assertSee('<del class="price-anchor">',false)->assertSee('120,00 €')->assertSee('80,00 €');
+        $this->get('/cjenik')->assertSee('class="price-reference"',false)->assertDontSee('<del',false)->assertSee('120,00 €')->assertSee('80,00 €')->assertSee('10. 09. 2026.');
         $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['anchor_amount']='80';
         $payload['fields']['valid_from']='2026-11-16';
         $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasNoErrors();
         $this->assertEquals(80,SiteContent::section('prices')['items'][0]['anchor_amount']);
-        $this->get('/cjenik')->assertDontSee('<del class="price-anchor">',false)->assertSee('80,00 €')->assertSee('16. 11. 2026.');
+        $this->get('/cjenik')->assertSee('class="price-reference"',false)->assertSee('80,00 €')->assertSee('16. 11. 2026.');
         $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['anchor_amount']='70';
-        $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasErrors('fields.items.0.anchor_amount');
+        $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasNoErrors();
+        $this->get('/cjenik')->assertSee('70,00 €')->assertSee('80,00 €')->assertDontSee('<del',false);
         $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['amount']='';
         $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasErrors('fields.items.0.amount');
         $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['anchor_amount']='';
         $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasNoErrors();
-        $this->get('/cjenik')->assertDontSee('price-anchor',false)->assertSee('80,00 €');
+        $this->get('/cjenik')->assertDontSee('class="price-reference"',false)->assertSee('80,00 €');
     }
 
     public function test_icon_selection_is_saved_and_used_by_front_with_a_validated_allowlist(): void

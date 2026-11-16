@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SiteContent;
 use App\Support\SiteLocale;
+use App\Support\PricePublication;
 use Illuminate\View\View;
 
 class SiteController
@@ -11,7 +12,7 @@ class SiteController
     public function pricing(): View
     {
         $site = SiteContent::allSections(app()->getLocale());
-        return view('pricing', ['site' => $site, 'title' => $site['ui']['pricing_title']]);
+        return view('pricing', ['site' => $site, 'title' => $site['ui']['pricing_title'], 'priceVersion' => app(PricePublication::class)->current(app()->getLocale())]);
     }
     public function legal(string $page): View
     {

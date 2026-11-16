@@ -46,7 +46,7 @@ return [
         ['question' => 'Primaju li se i djeca?', 'answer' => 'Da, brinemo o dentalnom zdravlju cijele obitelji. Pružamo preventivne preglede i usluge dječje stomatologije, uz savjetovanje roditelja o pravilnoj oralnoj higijeni.'],
         ['question' => 'Kako doći do ordinacije?', 'answer' => 'Ordinacija se nalazi na adresi {address}, {city}. Poveznica „Upute za dolazak” otvara Google Maps, gdje možete odabrati način prijevoza.'],
     ],
-    'prices' => ['eyebrow' => 'CJENIK USLUGA', 'title' => 'Jasno od prvog', 'accent' => 'koraka.', 'aside_title' => 'Vaš osmijeh zaslužuje dobar plan.', 'aside_text' => 'Svaki osmijeh je drugačiji. Nakon pregleda razgovaramo o mogućnostima i zajedno dogovaramo terapiju i njezin trošak.'],
+    'prices' => ['eyebrow' => 'CJENIK USLUGA', 'title' => 'Jasno od prvog', 'accent' => 'koraka.', 'aside_title' => 'Vaš osmijeh zaslužuje dobar plan.', 'aside_text' => 'Svaki osmijeh je drugačiji. Nakon pregleda razgovaramo o mogućnostima i zajedno dogovaramo terapiju i njezin trošak.', 'anchor_date' => '', 'object_type' => 'Ordinacija dentalne medicine', 'object_code' => '01'],
     'page_meta' => [
         'business' => ['title' => 'Podaci o ordinaciji', 'intro' => 'Osnovni podaci o ordinaciji i načini na koje nam se možete obratiti.'],
         'privacy' => ['title' => 'Politika privatnosti', 'intro' => 'Kako koristimo vaše podatke i kako možete ostvariti svoja prava.'],

@@ -25,10 +25,10 @@
         <x-brand :site="$site" />
         <nav aria-label="{{ $site['ui']['nav_label'] }}" id="main-nav" class="main-nav">
             <a href="{{ \App\Support\SiteLocale::url('home') }}#o-nama">{{ $site['ui']['nav_about'] }}</a><a href="{{ \App\Support\SiteLocale::url('home') }}#usluge">{{ $site['ui']['nav_services'] }}</a><a href="{{ \App\Support\SiteLocale::url('home') }}#tim">{{ $site['ui']['nav_team'] }}</a><a href="{{ \App\Support\SiteLocale::url('pricing') }}">{{ $site['ui']['nav_pricing'] }}</a><a href="{{ \App\Support\SiteLocale::url('home') }}#kontakt">{{ $site['ui']['nav_contact'] }}</a>
-            <a class="button menu-cta" href="tel:{{ preg_replace('/[^+0-9]/', '', $site['contact']['phone']) }}"><x-icon name="phone" /> {{ $site['ui']['call_cta'] }}</a>
+            <a class="button menu-cta" href="{{ \App\Support\SiteLocale::url('home') }}#kontakt">{{ $site['ui']['book_exam'] }}</a>
         </nav>
         <x-language-switch :site="$site" />
-        <a class="button button-small header-cta" href="tel:{{ preg_replace('/[^+0-9]/', '', $site['contact']['phone']) }}"><x-icon name="phone" /> {{ $site['ui']['call_cta'] }}</a>
+        <a class="button button-small header-cta" href="{{ \App\Support\SiteLocale::url('home') }}#kontakt">{{ $site['ui']['book_exam'] }}</a>
         <button class="menu-toggle" aria-label="{{ $site['ui']['menu_open'] }}" data-open-label="{{ $site['ui']['menu_open'] }}" data-close-label="{{ $site['ui']['menu_close'] }}" aria-expanded="false" aria-controls="main-nav"><x-icon name="bars" /></button>
     </div>
 </header>
