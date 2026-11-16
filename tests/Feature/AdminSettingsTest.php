@@ -67,13 +67,18 @@ class AdminSettingsTest extends TestCase
         $this->get('https://clinic.example/robots.txt')->assertSee('Disallow: /admin',false);
     }
 
-    public function test_anchor_prices_are_optional_persist_and_require_a_lower_current_price(): void
+    public function test_anchor_prices_accept_equal_values_and_only_show_higher_values_as_discounts(): void
     {
         $this->actingAs($this->admin()); $payload=$this->payload('pricing','content');
         $payload['fields']['items'][0]['amount']='80'; $payload['fields']['items'][0]['anchor_amount']='120';
         $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasNoErrors();
         $this->assertEquals(120,SiteContent::section('prices')['items'][0]['anchor_amount']);
         $this->get('/cjenik')->assertSee('<del class="price-anchor">',false)->assertSee('120,00 €')->assertSee('80,00 €');
+        $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['anchor_amount']='80';
+        $payload['fields']['valid_from']='2026-11-16';
+        $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasNoErrors();
+        $this->assertEquals(80,SiteContent::section('prices')['items'][0]['anchor_amount']);
+        $this->get('/cjenik')->assertDontSee('<del class="price-anchor">',false)->assertSee('80,00 €')->assertSee('16. 11. 2026.');
         $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['anchor_amount']='70';
         $this->put('/admin/pages/pricing/content',$payload)->assertSessionHasErrors('fields.items.0.anchor_amount');
         $payload=$this->payload('pricing','content'); $payload['fields']['items'][0]['amount']='';

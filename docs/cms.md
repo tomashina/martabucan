@@ -12,7 +12,9 @@ Opisi koriste lokalno instalirani Trix 2.1.19, s vizualnim i HTML načinom. HTML
 
 Usluge, FAQ, članovi tima, fotografije i cjenik mogu se dodavati, uklanjati i poredati. Uklanjanje se može poništiti tipkom „Vrati” prije spremanja. „Odustani” vraća posljednju spremljenu verziju. Nespremljene promjene upozoravaju pri odlasku, a zastarjeli obrazac ne može prebrisati novije izmjene iste sekcije.
 
-Usluge imaju vizualni odabir ikona s pretragom. U cjeniku je sidrena cijena neobavezna referentna cijena koja se prikazuje prekriženo iznad aktualne; mora biti viša od aktualne cijene.
+Usluge imaju vizualni odabir ikona s pretragom. Svaka stavka cjenika ima polje „Kategorija”; stavke s istim nazivom prikazuju se zajedno, prema redoslijedu prve stavke svake kategorije. Sidrena cijena je neobavezna referentna cijena i može biti jednaka aktualnoj. Prikazuje se prekriženo iznad aktualne samo kada je viša.
+
+Cjenik od 16. 11. 2026. prepisan je iz datoteke `CJENIK-PDF.pdf` koju je ordinacija dostavila isti dan: 36 stavki u sedam kategorija, na hrvatskom i njemačkom. Iznosi i sidrene cijene su jednaki, sve su cijene točne (bez oznake „od”). Za jednokratni unos u postojeću bazu nakon deploya pokrenuti `php artisan db:seed --class=PriceListSeeder --force`. Naredba zamjenjuje stavke, uvod i datum cjenika u oba jezika; ostali sadržaj ostaje sačuvan. Ne pokretati je kod budućih deploya ako su cijene naknadno uređivane u adminu. Izvor podataka je `database/data/prices-2026-11-16.php`.
 
 „Postavke” u odjeljku Administracija sadrže SEO, OpenGraph sliku i tekstove, GA4 Measurement ID, Google Search Console potvrdu, Google Maps adresu, društvene poveznice i Meta potvrdu domene. Analitika ostaje isključena dok nije unesen valjan GA4 ID i posjetitelj nije dao privolu. Lokalna domena `.test` uvijek ostaje izvan indeksiranja.
 

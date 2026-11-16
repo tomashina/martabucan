@@ -58,3 +58,7 @@
 .price-anchor{display:block;font-family:InstrumentSans,Arial,sans-serif;font-size:16px;line-height:1.5;letter-spacing:0;color:var(--muted);margin-bottom:4px;text-decoration-thickness:1px}
 .price-current{white-space:nowrap}
 .price-sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.price-category+.price-category{margin-top:38px}
+.price-category-title{font-family:Sora,InstrumentSans,sans-serif;font-size:21px;font-weight:500;line-height:1.5;letter-spacing:-.4px;color:var(--purple-dark);padding:18px 20px;margin:0;background:#f6f0f8;border-left:3px solid #cbb1d7;overflow-wrap:anywhere}
+.price-list-heading+.price-category{margin-top:8px}
+@media(max-width:640px){.price-category+.price-category{margin-top:28px}.price-category-title{font-size:18px;padding:15px 16px}.price-category .price-row{align-items:flex-start}.price-category .price-row h3{overflow-wrap:anywhere}.price-category .price-amount{font-size:19px;line-height:1.45}}

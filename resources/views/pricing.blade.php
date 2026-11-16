@@ -22,10 +22,15 @@
         </aside>
         <div class="price-list">
             <div class="price-list-heading"><span>{{ $site['ui']['price_service'] }}</span><span>{{ $site['ui']['price_amount'] }}</span></div>
-            @foreach($site['prices']['items'] as $price)
-                <div class="price-row">
-                    <div><h3>{{ $price['name'] }}</h3><p>{{ $price['detail'] }}</p></div>
-                    <span class="price-amount">@if($price['amount'] !== null && $price['amount'] !== '')@if(isset($price['anchor_amount']) && $price['anchor_amount'] > $price['amount'])<del class="price-anchor"><span class="price-sr-only">{{ $site['ui']['reference_price'] }} </span>{{ number_format((float) $price['anchor_amount'], 2, ',', '.') }} €</del>@endif<span class="price-current">@if($price['from'])<small>{{ $site['ui']['price_from'] }} </small>@endif{{ number_format((float) $price['amount'], 2, ',', '.') }} €</span>@else<span class="price-pending">{{ $site['ui']['price_on_request'] }}</span>@endif</span>
+            @foreach(collect($site['prices']['items'])->groupBy(fn ($price) => trim($price['category'] ?? '')) as $category => $prices)
+                <div class="price-category" @if($category !== '') role="group" aria-labelledby="price-category-{{ $loop->index }}" @endif>
+                    @if($category !== '')<h2 class="price-category-title" id="price-category-{{ $loop->index }}">{{ $category }}</h2>@endif
+                    @foreach($prices as $price)
+                        <div class="price-row">
+                            <div><h3>{{ $price['name'] }}</h3>@if(!empty($price['detail']))<p>{{ $price['detail'] }}</p>@endif</div>
+                            <span class="price-amount">@if($price['amount'] !== null && $price['amount'] !== '')@if(isset($price['anchor_amount']) && $price['anchor_amount'] > $price['amount'])<del class="price-anchor"><span class="price-sr-only">{{ $site['ui']['reference_price'] }} </span>{{ number_format((float) $price['anchor_amount'], 2, ',', '.') }} €</del>@endif<span class="price-current">@if($price['from'])<small>{{ $site['ui']['price_from'] }} </small>@endif{{ number_format((float) $price['amount'], 2, ',', '.') }} €</span>@else<span class="price-pending">{{ $site['ui']['price_on_request'] }}</span>@endif</span>
+                        </div>
+                    @endforeach
                 </div>
             @endforeach
             @if($site['prices']['tax_note'] || $site['prices']['valid_from'])

@@ -118,7 +118,7 @@ class CmsController
             foreach ($validated['fields']['items'] as $index=>$row) {
                 if (($row['anchor_amount'] ?? null) !== null && $row['anchor_amount'] !== '') {
                     if (($row['amount'] ?? null) === null || $row['amount'] === '') throw ValidationException::withMessages(['fields.items.'.$index.'.amount'=>'Uz sidrenu cijenu upišite i aktualnu cijenu.']);
-                    if ((float)$row['anchor_amount'] <= (float)$row['amount']) throw ValidationException::withMessages(['fields.items.'.$index.'.anchor_amount'=>'Sidrena cijena mora biti veća od aktualne.']);
+                    if ((float)$row['anchor_amount'] < (float)$row['amount']) throw ValidationException::withMessages(['fields.items.'.$index.'.anchor_amount'=>'Sidrena cijena mora biti jednaka ili veća od aktualne.']);
                 }
             }
         }

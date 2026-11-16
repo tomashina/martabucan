@@ -61,7 +61,7 @@ $pages = [
    'eyebrow'=>$f('Nadnaslov','prices.eyebrow'),'title'=>$f('Naslov','prices.title','text',['required'=>true]),'accent'=>$f('Naglašeni dio naslova','prices.accent'),
    'description'=>$f('Uvodni tekst','prices.note','rich'),'aside_title'=>$f('Naslov uz cjenik','prices.aside_title'),'aside_text'=>$f('Opis uz cjenik','prices.aside_text','rich'),
    'items'=>$f('Stavke cjenika','prices.items','repeater',['add'=>'Dodaj stavku','item'=>'Stavka','min'=>0,'max'=>100,'fields'=>[
-    'name'=>$f('Naziv usluge','','text',['required'=>true]),'detail'=>$f('Kratki opis','','text'),'amount'=>$f('Aktualna cijena (EUR)','','number'), 'anchor_amount'=>$f('Sidrena cijena (EUR)','','number',['placeholder'=>'Nije postavljena','help'=>'Opcionalna referentna cijena. Na stranici se prikazuje precrtano iznad aktualne cijene.']),'from'=>$f('Vrsta cijene','','boolean'),
+    'name'=>$f('Naziv usluge','','text',['required'=>true]),'category'=>$f('Kategorija','','text',['help'=>'Stavke s istim nazivom kategorije prikazuju se zajedno. Redoslijed kategorija prati prvu pripadajuću stavku.']),'detail'=>$f('Kratki opis','','text'),'amount'=>$f('Aktualna cijena (EUR)','','number'), 'anchor_amount'=>$f('Sidrena cijena (EUR)','','number',['placeholder'=>'Nije postavljena','help'=>'Može biti jednaka aktualnoj cijeni. Precrtano se prikazuje samo kada je viša od aktualne.']),'from'=>$f('Vrsta cijene','','boolean'),
    ]]),'tax_note'=>$f('Napomena o porezu i troškovima','prices.tax_note','textarea'),'valid_from'=>$f('Cjenik vrijedi od','prices.valid_from','date'),
   ]),
  ]],
