@@ -156,11 +156,11 @@
             <figure>
                 <div class="result-photo photo-depth">
                     <button class="result-zoom photo-depth-frame" type="button" data-gallery="{{ \App\Support\ImageAsset::url($photo['image']) }}" data-caption="{{ $photo['caption'] }}" aria-label="{{ $site['ui']['zoom_photo'] }}">
-                        <x-site-image :path="$photo['image']" :alt="$photo['alt']" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1376px) calc((100vw - 128px) / 2), 624px" />
+                        <x-site-image :path="$photo['image']" :alt="$photo['alt']" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 900px) 560px, (max-width: 1376px) calc((100vw - 160px) / 3), 405px" />
                         <span class="zoom-label"><x-icon name="magnifying-glass-plus" /> {{ $site['ui']['zoom_label'] }}</span>
                     </button>
                 </div>
-                <figcaption><span>{{ $site['ui']['before'] }}</span><span>{{ $site['ui']['after'] }}</span></figcaption>
+                <figcaption>{{ $photo['caption'] }}</figcaption>
             </figure>
             @endforeach
         </div>

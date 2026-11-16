@@ -12,7 +12,7 @@ class WebsiteTest extends TestCase
 
     public function test_home_and_legal_pages_render_without_third_party_embeds(): void
     {
-        $this->get('/')->assertOk()->assertSee('Podarite sebi i svojoj obitelji')->assertSee('savršeni osmijeh!')->assertSee('href="/cjenik"', false)->assertSee('fa-tooth')->assertDontSee('<iframe', false)->assertDontSee('google-analytics.com')->assertDontSee('fa-arrow-')->assertSee('zubi04-1058.webp')->assertSee('endodoncija');
+        $this->get('/')->assertOk()->assertSee('Podarite sebi i svojoj obitelji')->assertSee('savršeni osmijeh!')->assertSee('href="/cjenik"', false)->assertSee('fa-tooth')->assertDontSee('<iframe', false)->assertDontSee('google-analytics.com')->assertDontSee('fa-arrow-')->assertSee('rezultati-2694-1920.webp')->assertDontSee('/assets/images/zubi')->assertSee('endodoncija');
         $this->get('/cjenik')->assertOk()->assertSee('Na upit');
         foreach (['privatnost', 'kolacici', 'uvjeti-koristenja', 'podaci-o-ordinaciji'] as $page) $this->get('/'.$page)->assertOk();
         $this->get('/index.html')->assertStatus(301)->assertRedirect('/');

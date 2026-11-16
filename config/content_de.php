@@ -98,7 +98,7 @@ return [
             ['image' => '/assets/images/ordinacija.webp', 'alt' => 'Innenraum der Zahnarztpraxis Marta Bućan'],
             ['image' => '/assets/images/cekaona.webp', 'alt' => 'Wartezimmer der Zahnarztpraxis Marta Bućan'],
         ],
-        'results' => array_map(static fn ($number) => ['image' => '/assets/images/zubi'.$number.'-1058.webp', 'alt' => 'Vor der Behandlung links und nach der Behandlung rechts', 'caption' => 'Vor und nach der Behandlung'], ['01', '02', '03', '04']),
+        'results' => array_map(static fn ($number) => ['image' => '/assets/images/rezultati-'.$number.'-1920.webp', 'alt' => 'Fotografischer Vergleich vor und nach der Zahnbehandlung', 'caption' => 'Vor und nach der Behandlung'], ['2393', '2491', '2694']),
     ],
     'faq' => [
         ['question' => 'Wie vereinbare ich einen ersten Termin?', 'answer' => 'Rufen Sie uns unter {phone} an oder schreiben Sie an {email}. Gemeinsam finden wir einen passenden Termin. Der Termin gilt erst nach Absprache mit der Praxis als bestätigt.'],

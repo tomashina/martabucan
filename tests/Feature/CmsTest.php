@@ -41,7 +41,7 @@ class CmsTest extends TestCase
         $this->assertSame($original['media'],$current['media']);
         $this->assertSame($original['intro']['title'],$current['intro']['title']);
         $this->assertSame($original['contact'],$current['contact']);
-        $this->get('/')->assertSee('Dobar osjećaj počinje')->assertSee('zubi04-1058.webp');
+        $this->get('/')->assertSee('Dobar osjećaj počinje')->assertSee('rezultati-2694-1920.webp');
     }
 
     public function test_repeater_create_reorder_delete_and_empty_list_are_reflected_on_front(): void
