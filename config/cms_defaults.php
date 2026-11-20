@@ -38,7 +38,7 @@ return [
             ['image' => '/assets/images/ordinacija.webp', 'alt' => 'Unutrašnjost ordinacije Marta Bućan'],
             ['image' => '/assets/images/cekaona.webp', 'alt' => 'Čekaonica ordinacije Marta Bućan'],
         ],
-        'results' => array_map(fn ($number) => ['image' => '/assets/images/rezultati-'.$number.'-1920.webp', 'alt' => 'Fotografski prikaz stanja prije i poslije dentalne terapije', 'caption' => 'Prije i poslije terapije'], ['2393', '2491', '2694']),
+        'results' => array_map(fn ($number) => ['image' => '/assets/images/rezultati-'.$number.'-1920.webp', 'alt' => 'Fotografski prikaz stanja prije i poslije dentalne terapije', 'caption' => 'Prije i poslije terapije'], ['2393', '2491', '2694', '3003', '6053', '7457']),
     ],
     'faq' => [
         ['question' => 'Kako dogovoriti prvi pregled?', 'answer' => 'Nazovite {phone} ili pošaljite e-poštu na {email}. Zajedno ćemo dogovoriti termin koji vam odgovara. Termin je potvrđen tek nakon dogovora s ordinacijom.'],

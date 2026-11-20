@@ -4,7 +4,7 @@ Lokalni projekt: **http://martabucan.test**. Laravel 12, PHP 8.2+, SQLite. Poslu
 
 ## Stranice
 
-- `/` — responzivna naslovnica, svih devet usluga, predstavljanje ordinacije i tima, fotografije interijera, tri kolaža prije/poslije, CTA za cjenik, pitanja i kontakt.
+- `/` — responzivna naslovnica, svih devet usluga, predstavljanje ordinacije i tima, fotografije interijera, šest kolaža prije/poslije, CTA za cjenik, pitanja i kontakt.
 - `/cjenik` — zaseban cjenik, iznosi u EUR, opcionalna oznaka „od”, datum primjene, napomena o porezu i plaćanju.
 - `/privatnost`, `/kolacici`, `/uvjeti-koristenja`, `/podaci-o-ordinaciji` — radni pravni tekstovi i službeni podaci za dopunu.
 - `/admin` — uređivanje sadržaja, usluga, tima, cijena, kontakta i pravnih tekstova.
