@@ -35,6 +35,12 @@
                 <div class="legal-text">
                     <x-rich-text :text="$site['legal'][$key]" :headings="true" />
                 </div>
+                @if($key === 'cookies')
+                    <section class="information-block">
+                        <h2>{{ $site['ui']['theme_storage_title'] }}</h2>
+                        <p>{{ $site['ui']['theme_storage_description'] }}</p>
+                    </section>
+                @endif
                 @if($key === 'privacy' && $site['business']['hosting_provider'])<section class="information-block"><h2>{{ $site['ui']['hosting_provider'] }}</h2><p>{{ $site['business']['hosting_provider'] }}</p></section>@endif
                 @if($key === 'privacy' && $site['business']['privacy_retention'])<section class="information-block"><h2>{{ $site['ui']['retention_title'] }}</h2><p>{{ $site['business']['privacy_retention'] }}</p></section>@endif
                 @if(in_array($key, ['privacy', 'cookies']))

@@ -28,6 +28,21 @@ class WebsiteTest extends TestCase
         $this->assertDatabaseCount('site_contents', 0);
     }
 
+    public function test_public_pages_offer_localized_color_choices_and_explain_storage(): void
+    {
+        foreach (['/' => 'Maslinasto zelena', '/cjenik' => 'Trula višnja', '/de' => 'Olivgrün', '/de/preise' => 'Burgunderrot'] as $path => $label) {
+            $this->get($path)->assertOk()
+                ->assertSee('aria-label="'.$label.'"', false)
+                ->assertSee('data-theme-option="olive"', false)
+                ->assertSee('data-theme-option="cherry"', false)
+                ->assertSee('data-theme-option="gold"', false)
+                ->assertSeeInOrder(['/assets/js/theme.js', '/assets/css/site.css', 'data-theme-switcher']);
+        }
+        $this->get('/kolacici')->assertOk()->assertSee('mb_color_theme')->assertSee('Odabrana boja stranice');
+        $this->get('/de/cookies')->assertOk()->assertSee('mb_color_theme')->assertSee('Gewähltes Farbschema');
+        $this->get('/admin/prijava')->assertOk()->assertDontSee('data-theme-switcher')->assertDontSee('/assets/js/theme.js');
+    }
+
     public function test_optional_analytics_is_configured_without_loading_it_before_consent(): void
     {
         config(['integrations.ga4_measurement_id' => '']);

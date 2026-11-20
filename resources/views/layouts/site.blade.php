@@ -6,12 +6,14 @@
     <meta name="theme-color" content="#636B2F">
     <x-site-meta :site="$site" :page-title="$title ?? null" />
     <link rel="icon" href="/favicon-olive.png" type="image/png">
+    <script src="/assets/js/theme.js?v=1"></script>
     <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/sora.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/light.min.css">
-    <link rel="stylesheet" href="/assets/css/site.css?v=7">
-    <link rel="stylesheet" href="/assets/css/editorial.css?v=32">
+    <link rel="stylesheet" href="/assets/css/site.css?v=8">
+    <link rel="stylesheet" href="/assets/css/editorial.css?v=33">
+    <link rel="stylesheet" href="/assets/css/themes.css?v=1">
     @stack('styles')
     <script src="/assets/js/consent.js?v=3" defer></script>
     <script src="/assets/js/site.js?v=6" defer></script>
@@ -41,6 +43,14 @@
         <nav aria-label="{{ $site['ui']['legal_nav'] }}"><a href="{{ \App\Support\SiteLocale::url('business') }}">{{ $site['ui']['business_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('privacy') }}">{{ $site['ui']['privacy_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('cookies') }}">{{ $site['ui']['cookies_title'] }}</a><a href="{{ \App\Support\SiteLocale::url('terms') }}">{{ $site['ui']['terms_title'] }}</a><button class="cookie-settings-footer" type="button" data-cookie-settings aria-haspopup="dialog" aria-controls="cookie-dialog">{{ $site['ui']['cookie_dialog_title'] }}</button></nav>
     </div>
 </footer>
+<div class="theme-switcher" role="group" aria-label="{{ $site['ui']['theme_label'] }}" data-theme-switcher hidden>
+    @foreach(['olive', 'cherry', 'gold'] as $theme)
+        <button class="theme-choice" type="button" data-theme-option="{{ $theme }}" aria-label="{{ $site['ui']['theme_'.$theme] }}" aria-pressed="{{ $theme === 'olive' ? 'true' : 'false' }}">
+            <span class="theme-dot" aria-hidden="true"></span>
+            <span class="theme-name" aria-hidden="true">{{ $site['ui']['theme_'.$theme] }}</span>
+        </button>
+    @endforeach
+</div>
 <button class="cookie-settings-fab" type="button" data-cookie-settings data-cookie-launcher aria-label="{{ $site['ui']['cookie_dialog_title'] }}" title="{{ $site['ui']['cookie_dialog_title'] }}" aria-haspopup="dialog" aria-controls="cookie-dialog" hidden><x-icon name="cookie-bite" /></button>
 <aside class="cookie-banner" id="cookie-banner" aria-label="{{ $site['ui']['privacy_eyebrow'] }}" hidden>
     <div class="cookie-copy"><x-icon name="cookie-bite" /><div><strong>{{ $site['ui']['cookie_heading'] }}</strong><p>{{ str_replace('{services}', $ga4Id ? $site['ui']['cookie_services_analytics'] : 'Google Maps', $site['ui']['cookie_intro']) }} <a href="{{ \App\Support\SiteLocale::url('cookies') }}">{{ $site['ui']['cookie_about'] }}</a></p></div></div>

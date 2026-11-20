@@ -24,6 +24,14 @@ return [
         'social_nav' => $t('Društvene mreže', 'Društvene mreže', 'Soziale Medien'),
         'copyright' => $t('Autorska prava', 'Sva prava pridržana.', 'Alle Rechte vorbehalten.'),
     ]],
+    'appearance' => ['label' => 'Boje stranice', 'fields' => [
+        'theme_label' => $t('Opis birača boja', 'Odaberite boju stranice', 'Farbschema wählen'),
+        'theme_olive' => $t('Maslinasto zelena tema', 'Maslinasto zelena', 'Olivgrün'),
+        'theme_cherry' => $t('Tema trule višnje', 'Trula višnja', 'Burgunderrot'),
+        'theme_gold' => $t('Zlatna tema', 'Mat zlato', 'Mattgold'),
+        'theme_storage_title' => $t('Naslov opisa pohrane boje', 'Odabrana boja stranice', 'Gewähltes Farbschema'),
+        'theme_storage_description' => $t('Opis pohrane boje', 'Nakon odabira boje zapis mb_color_theme u lokalnoj pohrani preglednika pamti samo naziv teme. Ostaje spremljen dok ne izbrišete podatke stranice u pregledniku. Boju možete promijeniti biračem u donjem desnom kutu. Zapis se ne šalje poslužitelju i ne služi praćenju. Ako je lokalna pohrana blokirana, boja vrijedi samo na trenutačno otvorenoj stranici.', 'Nach der Farbauswahl speichert der Eintrag mb_color_theme im lokalen Browserspeicher nur den Namen des Farbschemas. Er bleibt gespeichert, bis Sie die Website-Daten im Browser löschen. Sie können die Farbe über die Auswahl unten rechts ändern. Der Eintrag wird nicht an den Server gesendet und dient nicht der Nachverfolgung. Ist der lokale Speicher blockiert, gilt die Farbe nur auf der aktuell geöffneten Seite.'),
+    ]],
     'home' => ['label' => 'Gumbi i oznake naslovnice', 'fields' => [
         'gallery_photos' => $t('Fotografije ordinacije', 'Fotografije ordinacije', 'Bilder unserer Praxis'),
         'gallery_controls' => $t('Kontrole fotografija', 'Kontrole fotografija', 'Bildsteuerung'),
