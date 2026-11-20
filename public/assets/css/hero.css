@@ -4,7 +4,7 @@
     align-items: flex-end;
     min-height: clamp(620px, calc(100svh - 100px), 820px);
     padding: 280px 0 52px;
-    background: #51464d;
+    background: var(--ink);
     color: #fff;
 }
 
@@ -26,7 +26,7 @@
 .hero-detail img { object-position: 55% center; }
 .hero-shade {
     z-index: -1;
-    background: linear-gradient(180deg, transparent 28%, rgba(29, 24, 30, .08) 40%, rgba(29, 24, 30, .58) 67%, rgba(29, 24, 30, .82) 100%);
+    background: linear-gradient(180deg, transparent 28%, rgba(30, 33, 24, .08) 40%, rgba(30, 33, 24, .58) 67%, rgba(30, 33, 24, .82) 100%);
 }
 
 .hero-cover-inner { position: relative; }
@@ -70,22 +70,22 @@
 .hero-actions .button {
     min-height: 54px;
     padding: 16px 25px;
-    border: 1px solid #decae6;
+    border: 1px solid var(--accent);
     border-radius: 3px;
-    background: #decae6;
-    color: #34253c;
+    background: var(--accent);
+    color: var(--on-accent);
     font-size: 15px;
     font-weight: 500;
     transition: background .2s, border-color .2s;
 }
 .hero-actions .button:hover {
-    background: #eadcf0;
-    border-color: #eadcf0;
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
     transform: none;
 }
 .hero-actions .hero-explore {
     border-color: rgba(255, 255, 255, .7);
-    background: rgba(29, 24, 30, .18);
+    background: rgba(30, 33, 24, .18);
     color: #fff;
 }
 .hero-actions .hero-explore:hover {
@@ -109,7 +109,7 @@
 .hero-controls button:hover { background: rgba(255, 255, 255, .12); }
 .hero-controls button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .hero-dot > span { width: 24px; height: 3px; background: rgba(255, 255, 255, .45); transition: background .2s; }
-.hero-dot[aria-pressed="true"] > span { background: #fff; }
+.hero-dot[aria-pressed="true"] > span { background: var(--paper); }
 .hero-dot:disabled { opacity: .25; cursor: default; }
 .hero-playback { font-size: 14px; }
 
@@ -140,10 +140,10 @@
     }
     .hero-backdrop img { object-position: center top; }
     .hero-shade {
-        background: linear-gradient(180deg, transparent 28%, rgba(29, 24, 30, .12) 43%, rgba(29, 24, 30, .66) 62%, rgba(29, 24, 30, .9) 100%);
+        background: linear-gradient(180deg, transparent 28%, rgba(30, 33, 24, .12) 43%, rgba(30, 33, 24, .66) 62%, rgba(30, 33, 24, .9) 100%);
     }
     html:lang(de) .hero-shade {
-        background: linear-gradient(180deg, transparent, rgba(29, 24, 30, .5) 20%, rgba(29, 24, 30, .66) 62%, rgba(29, 24, 30, .9) 100%);
+        background: linear-gradient(180deg, transparent, rgba(30, 33, 24, .5) 20%, rgba(30, 33, 24, .66) 62%, rgba(30, 33, 24, .9) 100%);
     }
     .hero-cover .eyebrow {
         font-size: 10px;
@@ -179,7 +179,7 @@
 }
 
 @media print {
-    .hero.hero-cover { min-height: 0; padding: 25px 0; background: none; color: #302a34; }
+    .hero.hero-cover { min-height: 0; padding: 25px 0; background: none; color: var(--ink); }
     .hero-slides, .hero-shade, .hero-footer { display: none; }
     .hero-cover .eyebrow { color: inherit; }
 }

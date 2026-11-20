@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#775686">
+    <meta name="theme-color" content="#636B2F">
     <x-site-meta :site="$site" :page-title="$title ?? null" />
-    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon-olive.png" type="image/png">
     <link rel="preload" href="/assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/sora.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/vendor/fontawesome/css/light.min.css">
-    <link rel="stylesheet" href="/assets/css/site.css?v=6">
-    <link rel="stylesheet" href="/assets/css/editorial.css?v=31">
+    <link rel="stylesheet" href="/assets/css/site.css?v=7">
+    <link rel="stylesheet" href="/assets/css/editorial.css?v=32">
     @stack('styles')
     <script src="/assets/js/consent.js?v=3" defer></script>
     <script src="/assets/js/site.js?v=6" defer></script>
